@@ -8,7 +8,16 @@ const Home = ({ search }) => {
   const [category, setCategory] = useState("");
 
   useEffect(() => {
-    API.get("/products").then((res) => setProducts(res.data));
+    const fetchProducts = async () => {
+      try {
+        const res = await API.get("/products"); // endpoint from your server
+        setProducts(res.data);
+      } catch (err) {
+        console.error(err.message || "Failed to fetch products");
+      } 
+    };
+
+    fetchProducts();
   }, []);
 
   const categories = [...new Set(products.map((p) => p.category))];
