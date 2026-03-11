@@ -10,7 +10,12 @@ const Home = ({ search }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await API.get("/products"); // endpoint from your server
+        const res = await API.get("/products",{
+          headers: {
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache"
+          },
+        }); 
         setProducts(res.data);
       } catch (err) {
         console.error(err.message || "Failed to fetch products");
