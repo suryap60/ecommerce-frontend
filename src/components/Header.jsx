@@ -48,8 +48,6 @@ const Header = ({ setSearch }) => {
                 Total Price: ${totalPrice}
               </span>
             )}
-
-            
           </div>
         </div>
       </div>
